@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><Entities>
+  <ExtensionPackages>
+    <ExtensionPackage name="D3Timeline" description="A D3 timeline chart. Using this chart requires having the D3 range chart and CoreUI also installed on the Thingworx instance." vendor="ThingWorx Customer Service" packageVersion="1.1.1" minimumThingWorxVersion="4.1.0"/>
+  </ExtensionPackages>
+  <Widgets>
+    <Widget name="D3Timeline">
+      <UIResources>
+        <FileResource type="CSS" file="D3Timeline.ide.css" description="" isDevelopment="true" isRuntime="false"/>
+        <FileResource type="JS" file="D3Timeline.ide.js" description="" isDevelopment="true" isRuntime="false"/>
+        <FileResource type="CSS" file="D3Timeline.runtime.css" description="" isDevelopment="false" isRuntime="true"/>
+        <FileResource type="JS" file="D3Timeline.runtime.js" description="" isDevelopment="false" isRuntime="true"/>
+      </UIResources>
+    </Widget>
+  </Widgets>
+</Entities>
