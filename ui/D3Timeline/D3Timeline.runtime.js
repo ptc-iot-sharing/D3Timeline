@@ -1,3 +1,5 @@
+window.BMCollectionViewMashupDefinitionCache = window.BMCollectionViewMashupDefinitionCache || {};
+
 /**
  * An object that renders and controls a timeline.
  * In order to work, the BMTimeline must have a BMTimelineDataSet object associated with it.

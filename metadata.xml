@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Entities>
   <ExtensionPackages>
-    <ExtensionPackage name="D3Timeline" description="A D3 timeline chart. Using this chart requires having the D3 range chart and CoreUI also installed on the Thingworx instance." vendor="ThingWorx Customer Service" packageVersion="1.1.1" minimumThingWorxVersion="4.1.0"/>
+    <ExtensionPackage name="D3Timeline" description="A D3 timeline chart. Using this chart requires having the D3 range chart and CoreUI also installed on the Thingworx instance." vendor="ThingWorx Customer Service" packageVersion="1.1.2" minimumThingWorxVersion="4.1.0"/>
   </ExtensionPackages>
   <Widgets>
     <Widget name="D3Timeline">
