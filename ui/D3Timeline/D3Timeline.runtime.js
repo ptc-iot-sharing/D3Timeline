@@ -700,13 +700,9 @@ TW.Runtime.Widgets.D3Timeline = function () { // <BMTimelineDataSet>
 
 			var dataLength = data.length;
 			
-			// If the duration field is missing, the duration for each state must be computed
-			if (!durationField) {
-				
-				for (var i = 0; i < dataLength; i++) {
-					data[i]['__D3Timeline__duration__' + XField] = (i == dataLength - 1 ? Date.now() - data[i][XField] : data[i + 1][XField] - data[i][XField]);
-				}
-				
+			// The duration for each state must be computed in case the duration field is missing for any row
+			for (var i = 0; i < dataLength; i++) {
+				data[i]['__D3Timeline__duration__' + XField] = (i == dataLength - 1 ? Date.now() - data[i][XField] : data[i + 1][XField] - data[i][XField]);
 			}
 
 			// Create the default color map for missing states
@@ -722,10 +718,7 @@ TW.Runtime.Widgets.D3Timeline = function () { // <BMTimelineDataSet>
 			
 			// Find the data extents
 			var startingExtent = d3.min(data, function (d) { return d[XField]; });
-			var endingExtent = d3.max(data, durationField ? 
-				function (d) { return (+d[XField]) + (+d[durationField]); } : 
-				function (d) { return (+d[XField]) + (+d['__D3Timeline__duration__' + XField]); }
-			);
+			var endingExtent = d3.max(data, d => (+d[XField]) + (isNaN(d[durationField]) ? (+d['__D3Timeline__duration__' + XField]) : (+d[durationField])));
 			
 			// Set the scale domain
 			scale.domain([+startingExtent, +endingExtent]);
@@ -1076,7 +1069,7 @@ TW.Runtime.Widgets.D3Timeline = function () { // <BMTimelineDataSet>
 	
 	// @override - BMTimelineDataSet
 	this.timelineDurationForDataPoint = function (timeline, dataPoint, options) {
-		return durationField ? dataPoint[durationField] : dataPoint['__D3Timeline__duration__' + XField];
+		return isNaN(dataPoint[durationField]) ? dataPoint['__D3Timeline__duration__' + XField] : dataPoint[durationField];
 	};
 	
 	// @override - BMTimelineDataSet
